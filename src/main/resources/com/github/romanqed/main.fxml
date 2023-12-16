@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.embed.swing.SwingNode?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="720.0" prefWidth="1280.0"
+            xmlns="http://javafx.com/javafx/11" fx:controller="com.github.romanqed.MainController"
+            fx:id="root">
+    <userData>
+        <fx:reference source="controller"/>
+    </userData>
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <Menu text="Файл">
+                <MenuItem onAction="#onSave" text="Сохранить"/>
+                <MenuItem onAction="#onLoad" text="Загрузить"/>
+                <MenuItem accelerator="Ctrl+Q" onAction="#onExitAction" text="Выход"/>
+            </Menu>
+            <Menu text="Сцена">
+                <MenuItem accelerator="Ctrl+U" onAction="#onRender" text="Отрендерить сцену"/>
+                <MenuItem accelerator="Ctrl+R" onAction="#onClear" text="Очистить сцену"/>
+            </Menu>
+            <Menu text="Справка">
+                <MenuItem onAction="#onAboutAction" text="О программе"/>
+                <MenuItem onAction="#onAuthorAction" text="Автор"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.80" prefHeight="160.0" prefWidth="200.0"
+                   BorderPane.alignment="TOP_LEFT">
+            <StackPane>
+                <SwingNode fx:id="node"/>
+            </StackPane>
+            <ScrollPane>
+                <VBox>
+                    <TitledPane text="Камера">
+                        <VBox>
+                            <HBox>
+                                <Label text="X: "/>
+                                <TextField fx:id="cameraX"/>
+                            </HBox>
+                            <HBox>
+                                <Label text="Y: "/>
+                                <TextField fx:id="cameraY"/>
+                            </HBox>
+                            <HBox>
+                                <Label text="Z: "/>
+                                <TextField fx:id="cameraZ"/>
+                            </HBox>
+                            <HBox>
+                                <Label text="Yaw: "/>
+                                <TextField fx:id="cameraYaw"/>
+                            </HBox>
+                            <HBox>
+                                <Label text="Pitch: "/>
+                                <TextField fx:id="cameraPitch"/>
+                            </HBox>
+                            <Button text="Установить камеру" onAction="#onSetCamera"/>
+                        </VBox>
+                    </TitledPane>
+                    <TitledPane text="Сцена">
+                        <VBox fx:id="sceneBox">
+                            <HBox>
+                                <ComboBox fx:id="addOp" promptText="Выберите элемент">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Куб"/>
+                                            <String fx:value="Цилиндр"/>
+                                            <String fx:value="Сфера"/>
+                                            <String fx:value="Тор"/>
+                                            <String fx:value="Операция"/>
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Button text="Добавить" onAction="#onAddNode"/>
+                            </HBox>
+                        </VBox>
+                    </TitledPane>
+                    <Button text="Отрендерить сцену" onAction="#onRender"/>
+                </VBox>
+            </ScrollPane>
+        </SplitPane>
+    </center>
+</BorderPane>

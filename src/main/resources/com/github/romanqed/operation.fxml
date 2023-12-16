@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<TitledPane text="Операция" xmlns="http://javafx.com/javafx/11"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.github.romanqed.MergeController">
+    <userData>
+        <fx:reference source="controller"/>
+    </userData>
+    <VBox>
+        <TitledPane text="Смещение">
+            <VBox>
+                <HBox>
+                    <Label text="X: "/>
+                    <TextField fx:id="xField"/>
+                </HBox>
+                <HBox>
+                    <Label text="Y: "/>
+                    <TextField fx:id="yField"/>
+                </HBox>
+                <HBox>
+                    <Label text="Z: "/>
+                    <TextField fx:id="zField"/>
+                </HBox>
+            </VBox>
+        </TitledPane>
+        <TitledPane text="Вращение">
+            <VBox>
+                <HBox>
+                    <Label text="По X: "/>
+                    <TextField fx:id="xRField"/>
+                </HBox>
+                <HBox>
+                    <Label text="По Y: "/>
+                    <TextField fx:id="yRField"/>
+                </HBox>
+                <HBox>
+                    <Label text="По Z: "/>
+                    <TextField fx:id="zRField"/>
+                </HBox>
+            </VBox>
+        </TitledPane>
+        <VBox fx:id="firstBox">
+            <Label text="Первый элемент"/>
+            <HBox>
+                <ComboBox fx:id="firstAdd" promptText="Выберите первый элемент">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Куб"/>
+                            <String fx:value="Цилиндр"/>
+                            <String fx:value="Сфера"/>
+                            <String fx:value="Тор"/>
+                            <String fx:value="Операция"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button text="Задать" onAction="#onFirstSet"/>
+            </HBox>
+        </VBox>
+        <VBox fx:id="secondBox">
+            <Label text="Второй элемент"/>
+            <HBox>
+                <ComboBox fx:id="secondAdd" promptText="Выберите второй элемент">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Куб"/>
+                            <String fx:value="Цилиндр"/>
+                            <String fx:value="Сфера"/>
+                            <String fx:value="Тор"/>
+                            <String fx:value="Операция"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button text="Задать" onAction="#onSecondSet"/>
+            </HBox>
+        </VBox>
+        <VBox>
+            <Label text="Операция"/>
+            <ComboBox fx:id="mergeOp" promptText="Выберите операцию">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Объединение"/>
+                        <String fx:value="Вычитание"/>
+                        <String fx:value="Пересечение"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </VBox>
+        <Button text="Применить" onAction="#onApply"/>
+        <Button text="Удалить" onAction="#onRemove"/>
+    </VBox>
+</TitledPane>

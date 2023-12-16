@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<TitledPane text="Цилиндр"
+            xmlns="http://javafx.com/javafx/11"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.github.romanqed.CylinderController">
+    <userData>
+        <fx:reference source="controller"/>
+    </userData>
+    <VBox>
+        <TitledPane text="Смещение">
+            <VBox>
+                <HBox>
+                    <Label text="X: "/>
+                    <TextField fx:id="xField"/>
+                </HBox>
+                <HBox>
+                    <Label text="Y: "/>
+                    <TextField fx:id="yField"/>
+                </HBox>
+                <HBox>
+                    <Label text="Z: "/>
+                    <TextField fx:id="zField"/>
+                </HBox>
+            </VBox>
+        </TitledPane>
+        <TitledPane text="Вращение">
+            <VBox>
+                <HBox>
+                    <Label text="По X: "/>
+                    <TextField fx:id="xRField"/>
+                </HBox>
+                <HBox>
+                    <Label text="По Y: "/>
+                    <TextField fx:id="yRField"/>
+                </HBox>
+                <HBox>
+                    <Label text="По Z: "/>
+                    <TextField fx:id="zRField"/>
+                </HBox>
+            </VBox>
+        </TitledPane>
+        <TitledPane text="Параметры">
+            <VBox>
+                <HBox>
+                    <Label text="Радиус: "/>
+                    <TextField fx:id="radiusField"/>
+                </HBox>
+                <HBox>
+                    <Label text="Высота: "/>
+                    <TextField fx:id="heightField"/>
+                </HBox>
+            </VBox>
+        </TitledPane>
+        <Button text="Применить" onAction="#onApply"/>
+        <Button text="Удалить" onAction="#onRemove"/>
+    </VBox>
+</TitledPane>
