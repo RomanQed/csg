@@ -12,7 +12,7 @@ public final class ClipUtil {
     private ClipUtil() {
     }
 
-    public static List<Triangle> clip1(Plane plane, Vector3d invisible, Vector3d v1, Vector3d v2) {
+    private static List<Triangle> clip1(Plane plane, Vector3d invisible, Vector3d v1, Vector3d v2) {
         var l13 = new Line(v1, invisible);
         var l23 = new Line(v2, invisible);
         var v31 = PlaneUtil.intersection(plane, l13);
@@ -23,7 +23,7 @@ public final class ClipUtil {
         );
     }
 
-    public static Triangle clip2(Plane plane, Vector3d i1, Vector3d i2, Vector3d v) {
+    private static Triangle clip2(Plane plane, Vector3d i1, Vector3d i2, Vector3d v) {
         var l12 = new Line(v, i1);
         var l13 = new Line(v, i2);
         var v2 = PlaneUtil.intersection(plane, l12);
