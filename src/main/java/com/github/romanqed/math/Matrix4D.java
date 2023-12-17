@@ -102,7 +102,7 @@ public final class Matrix4D {
 
     public Matrix4D multiply(Matrix4D matrix) {
         /*
-        Перемножение матриц "вручную", т.к. операция [] в jvm вызывает мало того что каждый раз делает in-bounds-check,
+        Перемножение матриц "вручную", т.к. операция [] в jvm мало того что каждый раз делает in-bounds-check,
         так ещё и провоцирует активные кэш-миссы из-за цепочки разыменований вроде array-ref->array-body->array-data
          */
         var ret = new Matrix4D();
