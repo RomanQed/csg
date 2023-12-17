@@ -101,6 +101,10 @@ public final class Matrix4D {
     }
 
     public Matrix4D multiply(Matrix4D matrix) {
+        /*
+        Перемножение матриц "вручную", т.к. операция [] в jvm вызывает мало того что каждый раз делает in-bounds-check,
+        так ещё и провоцирует активные кэш-миссы из-за цепочки разыменований вроде array-ref->array-body->array-data
+         */
         var ret = new Matrix4D();
         ret.m00 = m00 * matrix.m00 + m01 * matrix.m10 + m02 * matrix.m20 + m03 * matrix.m30;
         ret.m01 = m00 * matrix.m01 + m01 * matrix.m11 + m02 * matrix.m21 + m03 * matrix.m31;
@@ -122,6 +126,9 @@ public final class Matrix4D {
     }
 
     public Vector4D multiply(Vector4D vector) {
+        /*
+        То же самое с векторами
+         */
         var ret = new Vector4D();
         ret.x = m00 * vector.x + m01 * vector.y + m02 * vector.z + m03 * vector.w;
         ret.y = m10 * vector.x + m11 * vector.y + m12 * vector.z + m13 * vector.w;
